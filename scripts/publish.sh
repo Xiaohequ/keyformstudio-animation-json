@@ -123,6 +123,7 @@ if [ "$DRY_RUN" -eq 1 ]; then
     --changelog "$CHANGELOG" \
     --tags latest \
     --source-repo "$REPO_URL" \
+    --source-commit "$(git -C "$ROOT" rev-parse HEAD)" \
     --source-ref main \
     --source-path . \
     --dry-run
