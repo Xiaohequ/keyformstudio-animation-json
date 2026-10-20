@@ -3,6 +3,10 @@
 Le skill est versionné avec l'application : chaque entrée indique la version du
 skill, la version VASF couverte et la version d'appli de référence.
 
+## 1.0.1 — 2026-10-20
+
+- Inclut le README et le script de publication
+
 ## 1.0.0 — 2026-10-21
 
 - Première version hébergée DANS le dépôt `vector-anim-studio` (auparavant
