@@ -1,7 +1,16 @@
 # Journal du skill keyformstudio-animation-json
 
-Le skill est versionné avec l'application : chaque entrée indique la version du
-skill, la version VASF couverte et la version d'appli de référence.
+Chaque entrée indique la version du skill, la version VASF couverte et la
+version d'appli de référence.
+
+## 1.1.0 — 2026-10-21
+
+- SKILL.md réécrit en anglais pour un usage par un agent tiers.
+- Contenu resserré : suppression des notes d'historique de développement
+  (versions d'appli, éditeur in-app, détails d'implémentation), des chemins
+  propres au dépôt de l'appli et de la section de synchronisation.
+- Règles regroupées par thème (core rules, versions, gotchas, workflow) au lieu
+  d'un empilement chronologique.
 
 ## 1.0.1 — 2026-10-20
 

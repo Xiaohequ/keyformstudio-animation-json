@@ -66,6 +66,9 @@ Le frontmatter de `SKILL.md` porte trois versions : `version` (le skill),
 `vasf` (la version de format couverte) et `app` (la version d'appli de
 référence). L'historique est dans `CHANGELOG.md`.
 
+`SKILL.md` est rédigé en anglais : c'est la langue de travail des agents qui
+consomment le skill.
+
 Ce dépôt est la copie **publiée** du skill. Le dépôt de l'application reste la
 source de vérité du code qui implémente le format ; `references/` en est le
 miroir exact.
