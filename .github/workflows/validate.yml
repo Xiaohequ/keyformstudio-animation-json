@@ -25,7 +25,10 @@ jobs:
           python-version: '3.11'
 
       - name: Dépendances
-        run: python -m pip install --upgrade pip pillow numpy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libcairo2-dev pkg-config
+          python -m pip install --upgrade pip pycairo pillow numpy
 
       - name: Frontmatter complet
         run: |
