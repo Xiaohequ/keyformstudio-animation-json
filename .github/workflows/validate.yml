@@ -1,0 +1,63 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validateur et exemples
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Dépendances
+        run: python -m pip install --upgrade pip pillow numpy
+
+      - name: Frontmatter complet
+        run: |
+          for key in name version vasf app description; do
+            grep -q "^$key:" SKILL.md || { echo "clé « $key » absente de SKILL.md"; exit 1; }
+          done
+
+      - name: Tous les exemples sont importables
+        run: |
+          fail=0
+          for f in references/vasf-*.json; do
+            case "$f" in
+              *vasf-1-examples.json)
+                # Recueil multi-objets : refus attendu (l'appli importe un seul objet).
+                if python3 scripts/validate_vasf.py "$f" >/dev/null 2>&1; then
+                  echo "✘ $f devrait être refusé (recueil multi-objets)"; fail=1
+                else
+                  echo "✔ $f refusé comme attendu (recueil)"
+                fi
+                ;;
+              *)
+                if python3 scripts/validate_vasf.py "$f" >/dev/null; then
+                  echo "✔ $f"
+                else
+                  echo "✘ $f refusé"; fail=1
+                fi
+                ;;
+            esac
+          done
+          exit $fail
+
+      - name: Aperçu headless de l'exemple VASF-6
+        run: |
+          python3 scripts/preview_vasf.py references/vasf-6-example.json 0 1.5 3
+          test -f tmp/vasf_preview/vasf-6-example/planche.png
