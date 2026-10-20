@@ -140,8 +140,14 @@ $CHANGELOG"
 git -C "$ROOT" tag -a "v$VERSION" -m "Skill $VERSION"
 printf '✔ commit et tag v%s créés\n' "$VERSION"
 
-git -C "$ROOT" push origin main
-git -C "$ROOT" push origin "v$VERSION"
+# Aucune credential git locale : pousser via l'URL HTTPS avec le token.
+if [ -n "${GITHUB_ACCES_TOKEN:-}" ]; then
+  PUSH_URL="https://${GITHUB_ACCES_TOKEN}@github.com/Xiaohequ/${SLUG}.git"
+else
+  PUSH_URL="$(git -C "$ROOT" remote get-url origin)"
+fi
+git -C "$ROOT" push "$PUSH_URL" main
+git -C "$ROOT" push "$PUSH_URL" "v$VERSION"
 printf '✔ poussé sur %s\n' "$REPO_URL"
 
 # --- Publication ClawHub ---------------------------------------------------
