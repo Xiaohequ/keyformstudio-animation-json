@@ -76,3 +76,9 @@ miroir exact.
 ## Licence
 
 MIT — voir `LICENSE`.
+
+Note : ClawHub affiche **MIT-0** (MIT sans attribution) sur la fiche du skill.
+Ce n'est pas un choix de l'auteur mais la licence unique que la plateforme
+applique à tous les skills publiés ; le champ n'accepte que `MIT-0` ou vide
+(demande d'ouverture aux autres licences SPDX : openclaw/clawhub#3439). Le
+fichier `LICENSE` de ce dépôt reste la référence : MIT, avec attribution.

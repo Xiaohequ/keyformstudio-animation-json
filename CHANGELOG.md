@@ -3,6 +3,11 @@
 Chaque entrée indique la version du skill, la version VASF couverte et la
 version d'appli de référence.
 
+## 1.1.1 — 2026-10-21
+
+- README : précision sur la licence affichée par ClawHub (MIT-0 imposé par la
+  plateforme) et sur le fichier `LICENSE` du dépôt (MIT avec attribution).
+
 ## 1.1.0 — 2026-10-21
 
 - SKILL.md réécrit en anglais pour un usage par un agent tiers.
