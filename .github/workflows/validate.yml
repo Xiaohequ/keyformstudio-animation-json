@@ -32,7 +32,7 @@ jobs:
 
       - name: Frontmatter complet
         run: |
-          for key in name version vasf app description; do
+          for key in name version description license homepage; do
             grep -q "^$key:" SKILL.md || { echo "clé « $key » absente de SKILL.md"; exit 1; }
           done
 

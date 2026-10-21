@@ -1,7 +1,18 @@
 # Journal du skill keyformstudio-animation-json
 
-Chaque entrée indique la version du skill, la version VASF couverte et la
-version d'appli de référence.
+Chaque entrée indique la version du skill et la version VASF couverte.
+
+## 1.3.0 — 2026-10-21
+
+- `references/vasf-1-format.md` supprimé : la référence complète des champs
+  (racine, forme, keyframe de forme, squelette, keyframe d'os) est désormais
+  dans `SKILL.md`, qui devient autosuffisant.
+- Frontmatter remanié : `vasf` et `app` retirés, `license: MIT` et `homepage`
+  ajoutés.
+- Workflow : l'étape d'aperçu est retirée de `SKILL.md` (le script n'est pas
+  publié sur ClawHub).
+- `description` du frontmatter resserrée (plus de mention « VASF-1 to VASF-6 »
+  ni « Vector Anim Studio »).
 
 ## 1.2.1 — 2026-10-21
 

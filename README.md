@@ -37,37 +37,28 @@ Ou manuellement : copier ce dossier dans `~/.nanobot/workspace/skills/`.
 ```bash
 # Valider un fichier avant import
 python3 scripts/validate_vasf.py mon_animation.json
-
-# Rendre une planche de contrôle (5 instants répartis sur la durée)
-python3 scripts/preview_vasf.py mon_animation.json
-
-# Instants précis, avec le squelette superposé
-python3 scripts/preview_vasf.py mon_animation.json 0 0.5 1.2 --bones
 ```
 
 Le validateur sort en code 0 si le fichier est importable, 1 s'il contient des
-erreurs. L'aperçu écrit `tmp/vasf_preview/<nom>/planche.png` et les frames
-pleine résolution.
+erreurs, et affiche chaque problème en français avec son chemin.
 
 ## Structure
 
 ```
 keyformstudio-animation-json/
-├─ SKILL.md              # instructions de l'agent (frontmatter version/vasf/app)
+├─ SKILL.md              # instructions de l'agent + référence complète des champs
 ├─ CHANGELOG.md          # historique des versions du skill
 ├─ references/
-│  ├─ vasf-1-format.md   # spec complète du format
 │  └─ vasf-example.json  # UN exemple complet couvrant toutes les fonctionnalités
 └─ scripts/
    ├─ validate_vasf.py   # validateur (mêmes règles que l'import de l'appli)
-   └─ preview_vasf.py    # rendu headless fidèle au moteur Flutter
+   └─ preview_vasf.py    # rendu headless (outil de développement, non publié)
 ```
 
 ## Versions
 
-Le frontmatter de `SKILL.md` porte trois versions : `version` (le skill),
-`vasf` (la version de format couverte) et `app` (la version d'appli de
-référence). L'historique est dans `CHANGELOG.md`.
+Le frontmatter de `SKILL.md` porte `version` (le skill), `license` et
+`homepage`. L'historique est dans `CHANGELOG.md`.
 
 `SKILL.md` est rédigé en anglais : c'est la langue de travail des agents qui
 consomment le skill.
