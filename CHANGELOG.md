@@ -3,6 +3,13 @@
 Chaque entrée indique la version du skill, la version VASF couverte et la
 version d'appli de référence.
 
+## 1.2.1 — 2026-10-21
+
+- `.clawhubignore` : README.md, CHANGELOG.md, scripts/publish.sh et
+  scripts/preview_vasf.py restent dans le dépôt GitHub mais ne sont plus
+  publiés sur ClawHub (bundle réduit à 5 fichiers : SKILL.md, LICENSE, la spec,
+  l'exemple et le validateur).
+
 ## 1.2.0 — 2026-10-21
 
 - Exemples fusionnés en un seul fichier `references/vasf-example.json` : un

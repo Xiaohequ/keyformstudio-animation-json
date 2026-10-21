@@ -1,0 +1,6 @@
+# Fichiers présents dans le dépôt GitHub mais NON publiés sur ClawHub.
+# Le CLI lit ce fichier en plus de .gitignore (voir listSkillFiles).
+README.md
+CHANGELOG.md
+scripts/publish.sh
+scripts/preview_vasf.py
