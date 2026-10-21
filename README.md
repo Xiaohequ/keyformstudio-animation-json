@@ -82,3 +82,16 @@ Ce n'est pas un choix de l'auteur mais la licence unique que la plateforme
 applique à tous les skills publiés ; le champ n'accepte que `MIT-0` ou vide
 (demande d'ouverture aux autres licences SPDX : openclaw/clawhub#3439). Le
 fichier `LICENSE` de ce dépôt reste la référence : MIT, avec attribution.
+
+### État de la publication ClawHub
+
+La version **1.1.0** est la dernière visible sur ClawHub. Les versions 1.1.1,
+1.1.2 et 1.1.3 ont été acceptées par le registre puis sont restées bloquées en
+`pending.publication` : le scan de sécurité les déclare CLEAN, mais elles
+n'apparaissent ni dans l'index ni dans `inspect`, et `clawhub unhide` répond
+« Forbidden: hidden by moderation ». C'est un défaut connu du registre
+(openclaw/clawhub#3466, #3205, #3937), sans recours côté propriétaire.
+
+Ces trois versions n'apportaient que la note de licence ci-dessus : le contenu
+utile du skill (SKILL.md en anglais, validateur, aperçu, exemples) est bien
+celui de la 1.1.0 en ligne. Le dépôt GitHub reste la référence à jour.

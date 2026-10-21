@@ -3,6 +3,13 @@
 Chaque entrée indique la version du skill, la version VASF couverte et la
 version d'appli de référence.
 
+## 1.1.4 — 2026-10-21
+
+- README : documenter l'état réel de la publication ClawHub (1.1.0 visible,
+  1.1.1 à 1.1.3 bloquées en `pending.publication` par un défaut du registre).
+- Décision : conserver la situation telle quelle — le dépôt GitHub porte MIT,
+  la fiche ClawHub affiche MIT-0 (licence imposée par la plateforme).
+
 ## 1.1.3 — 2026-10-21
 
 - Test de publication sans métadonnées de catalogue (les 1.1.1 et 1.1.2 sont
