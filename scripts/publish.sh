@@ -83,14 +83,10 @@ if [ -n "$(git -C "$ROOT" status --porcelain)" ]; then
   exit 1
 fi
 
-# Le validateur doit accepter tous les exemples avant publication.
-for f in "$ROOT"/references/vasf-*.json; do
-  case "$f" in
-    *vasf-1-examples.json) continue ;;  # recueil multi-objets, refus attendu
-  esac
-  python3 "$ROOT/scripts/validate_vasf.py" "$f" >/dev/null \
-    || { printf '✘ %s refusé par le validateur\n' "$f" >&2; exit 1; }
-done
+# Le validateur doit accepter l'exemple avant publication.
+python3 "$ROOT/scripts/validate_vasf.py" "$ROOT/references/vasf-example.json" \
+  >/dev/null \
+  || { printf '✘ references/vasf-example.json refusé par le validateur\n' >&2; exit 1; }
 
 printf '→ %s : %s -> %s\n' "$SLUG" "$current" "$VERSION"
 

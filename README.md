@@ -15,6 +15,9 @@ LLM : formes, keyframes, squelette optionnel, en secondes et en degrés.
   VASF-6 (groupes d'éléments).
 - Fournit un **validateur** qui reproduit les règles d'import strictes de
   l'application et rapporte les erreurs en français avec leur chemin.
+- Livre **un seul exemple**, `references/vasf-example.json`, qui exerce toutes
+  les fonctionnalités du format (groupes, couches, palette, defs, cycles,
+  pivot, cubic-bezier, morph, couleur animée, miroir, coins, squelette IK).
 - Fournit un **aperçu headless** qui rend les frames hors application, avec les
   mêmes formules que le moteur Flutter (vérifié au pixel, écart < 1/255), pour
   contrôler une composition avant de livrer le fichier.
@@ -54,7 +57,7 @@ keyformstudio-animation-json/
 ├─ CHANGELOG.md          # historique des versions du skill
 ├─ references/
 │  ├─ vasf-1-format.md   # spec complète du format
-│  └─ vasf-*.json        # exemples importables (v1, v2, v2-G2, v3, v5, v6)
+│  └─ vasf-example.json  # UN exemple complet couvrant toutes les fonctionnalités
 └─ scripts/
    ├─ validate_vasf.py   # validateur (mêmes règles que l'import de l'appli)
    └─ preview_vasf.py    # rendu headless fidèle au moteur Flutter

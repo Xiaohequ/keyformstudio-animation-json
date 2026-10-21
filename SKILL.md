@@ -1,6 +1,6 @@
 ---
 name: keyformstudio-animation-json
-version: 1.1.4
+version: 1.2.0
 vasf: 6
 app: 0.39.0
 description: Generate and validate VASF JSON animations (VASF-1 to VASF-6) for import into Keyform Studio. Use when asked to create an animation JSON, a "vasf" file, a Keyform Studio / Vector Anim Studio animation, or to fix a JSON rejected by the importer.
@@ -17,14 +17,12 @@ path.
 ## Start here
 
 1. Read `references/vasf-1-format.md` — every field, default and limit.
-2. Copy patterns from `references/vasf-1-examples.json` (bouncing ball, waving
-   skeleton, multi-layer character). It holds SEVERAL objects; the app imports
-   ONE object per file, so your output must be a single root object.
-3. Version-specific examples: `vasf-2-example.json` (layers, theme, defs,
-   cycle), `vasf-2-g2-example.json` (animated scaleX/scaleY, pivot,
-   cubic-bezier, layer binding), `vasf-3-example.json` (animated color, point
-   morph, bone move, 3-bone IK), `vasf-5-example.json` (rectangle corners),
-   `vasf-6-example.json` (element groups).
+2. Copy patterns from `references/vasf-example.json` — ONE complete animation
+   that exercises every feature: element groups (v6), theme aliases, defs+ref,
+   layers[], cycle, animated scaleX/scaleY, pivot, cubic-bezier, step easing,
+   start/end windows, animated color, point morph, flipH/flipV, rectangle
+   corners, a skeleton with IK + bend, bone `move`, and both shape and
+   layer bindings. It is a single importable object.
 
 ## Core rules
 

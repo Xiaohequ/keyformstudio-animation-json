@@ -36,31 +36,10 @@ jobs:
             grep -q "^$key:" SKILL.md || { echo "clé « $key » absente de SKILL.md"; exit 1; }
           done
 
-      - name: Tous les exemples sont importables
-        run: |
-          fail=0
-          for f in references/vasf-*.json; do
-            case "$f" in
-              *vasf-1-examples.json)
-                # Recueil multi-objets : refus attendu (l'appli importe un seul objet).
-                if python3 scripts/validate_vasf.py "$f" >/dev/null 2>&1; then
-                  echo "✘ $f devrait être refusé (recueil multi-objets)"; fail=1
-                else
-                  echo "✔ $f refusé comme attendu (recueil)"
-                fi
-                ;;
-              *)
-                if python3 scripts/validate_vasf.py "$f" >/dev/null; then
-                  echo "✔ $f"
-                else
-                  echo "✘ $f refusé"; fail=1
-                fi
-                ;;
-            esac
-          done
-          exit $fail
+      - name: L'exemple est importable
+        run: python3 scripts/validate_vasf.py references/vasf-example.json
 
-      - name: Aperçu headless de l'exemple VASF-6
+      - name: L'exemple se rend sans erreur
         run: |
-          python3 scripts/preview_vasf.py references/vasf-6-example.json 0 1.5 3
-          test -f tmp/vasf_preview/vasf-6-example/planche.png
+          python3 scripts/preview_vasf.py references/vasf-example.json 0 1.5 3 6
+          test -f tmp/vasf_preview/vasf-example/planche.png

@@ -3,6 +3,18 @@
 Chaque entrée indique la version du skill, la version VASF couverte et la
 version d'appli de référence.
 
+## 1.2.0 — 2026-10-21
+
+- Exemples fusionnés en un seul fichier `references/vasf-example.json` : un
+  objet importable unique qui exerce TOUTES les fonctionnalités du format
+  (groupes v6, theme, defs+ref, layers[], cycle, scaleX/scaleY animés, pivot,
+  cubic-bezier, easing step, fenêtres start/end, couleur animée, morph de
+  points, flipH/flipV, coins de rectangles, squelette IK + bend, move d'os,
+  liaisons de forme et de couche).
+- Suppression des six fichiers d'exemples séparés.
+- `validate_vasf.py` : accepte un recueil (`--pick CLE`) en plus d'un objet seul.
+- CI et `publish.sh` alignés sur le fichier unique.
+
 ## 1.1.4 — 2026-10-21
 
 - README : documenter l'état réel de la publication ClawHub (1.1.0 visible,

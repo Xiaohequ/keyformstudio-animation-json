@@ -694,7 +694,8 @@ def validate(doc):
     wrapper_keys = [k for k in doc if k.startswith("example")]
     if wrapper_keys or "_readme" in doc:
         err("$", "ce fichier est le recueil d'exemples (clés %s…) — l'appli "
-                 "importe UN SEUL objet : extraire l'objet d'exemple"
+                 "importe UN SEUL objet : extraire l'objet d'exemple "
+                 "(ou valider avec --pick CLE)"
             % ", ".join(wrapper_keys))
         return
 
@@ -798,11 +799,43 @@ def validate(doc):
                        shape_layers=shape_layers)
 
 
+def collection_keys(doc):
+    """Clés d'exemples d'un recueil (dict dont les valeurs sont des objets
+    d'animation), ou None si le document n'est pas un recueil."""
+    if not isinstance(doc, dict):
+        return None
+    keys = [k for k in doc if k.startswith("example")
+            and isinstance(doc[k], dict) and isinstance(doc[k].get("shapes"),
+                                                        list)]
+    return keys or None
+
+
+def validate_collection(doc, keys, quiet):
+    """Valide chaque objet d'un recueil ; renvoie le nombre d'erreurs."""
+    total = 0
+    for key in keys:
+        del errors[:]
+        del warnings[:]
+        validate(doc[key])
+        if not quiet:
+            for w in warnings:
+                print("⚠ %s : %s" % (key, w))
+            for e in errors:
+                print("✘ %s : %s" % (key, e))
+        total += len(errors)
+        if not errors:
+            ver = doc[key].get("version")
+            print("✔ %s : VASF-%s valide" % (key, ver))
+    return total
+
+
 def main():
     ap = argparse.ArgumentParser(description="Validateur VASF (v1/v2/v3/v4/v5/v6)")
     ap.add_argument("file", help="fichier .json, ou - pour stdin")
     ap.add_argument("--quiet", action="store_true",
                     help="afficher uniquement le verdict")
+    ap.add_argument("--pick", default=None,
+                    help="clé d'un objet dans un recueil d'exemples")
     args = ap.parse_args()
 
     try:
@@ -812,6 +845,23 @@ def main():
     except Exception as e:  # noqa: BLE001
         print("✘ JSON illisible : %s" % e)
         sys.exit(2)
+
+    keys = collection_keys(doc)
+    if keys is not None:
+        if args.pick is not None:
+            if args.pick not in keys:
+                print("✘ --pick %s : clés disponibles : %s"
+                      % (args.pick, ", ".join(keys)))
+                sys.exit(2)
+            keys = [args.pick]
+        total = validate_collection(doc, keys, args.quiet)
+        if total:
+            print("\n✘ %d erreur(s) dans le recueil — corriger avant import"
+                  % total)
+            sys.exit(1)
+        print("\n✔ recueil valide : %d objet(s) importables un par un"
+              % len(keys))
+        sys.exit(0)
 
     validate(doc)
 
