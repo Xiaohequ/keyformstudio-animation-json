@@ -3,6 +3,11 @@
 Chaque entrée indique la version du skill, la version VASF couverte et la
 version d'appli de référence.
 
+## 1.1.3 — 2026-10-21
+
+- Test de publication sans métadonnées de catalogue (les 1.1.1 et 1.1.2 sont
+  restées bloquées en attente côté ClawHub).
+
 ## 1.1.2 — 2026-10-21
 
 - Republication de la précision de licence (la 1.1.1 est restée bloquée en
