@@ -1,6 +1,6 @@
 ---
 name: keyformstudio-animation-json
-version: 1.1.1
+version: 1.1.2
 vasf: 6
 app: 0.39.0
 description: Generate and validate VASF JSON animations (VASF-1 to VASF-6) for import into Keyform Studio. Use when asked to create an animation JSON, a "vasf" file, a Keyform Studio / Vector Anim Studio animation, or to fix a JSON rejected by the importer.
